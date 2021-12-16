@@ -1,8 +1,7 @@
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: darkgreen;
+  color: darkgray;
   opacity: 1; /* Firefox */
 }
-
 
 .message_pfp{
   border-radius: 30vw;
@@ -10,7 +9,7 @@
   height:  6vw;
   font-weight: bold;
   font-size: 14px;
-	background-color: #000000;
+	background-color: white;
   position: relative;
   top: 10px;
 }
@@ -18,9 +17,9 @@
 .unb {
   padding: 1vw;
 display: inline-block;
-background-color: green;
-border-color: lightgreen; 
-color: red;
+background-color: white;
+  color: lightgray;
+border-color: darkgray; 
 border-radius: 50vw;
   font-size: 1vw;
   border-size: 1vw;
@@ -29,16 +28,16 @@ border-radius: 50vw;
 }
 
 .unb:hover {
-background-color: lightgreen;
-color: lightcoral;
-  border-color: green; 
+  background-color: transparent;
+  color: darkgray;
+  border-color: lightgray; 
 }
 #untitle {
 border-radius: 60vw;
  width: 63vw;
  height: 18vh;
 margin: auto;
-background-color: red;
+background-color: white;
   font-size: 40px;
 text-align-verticle: center;
 text-align: center;
@@ -52,7 +51,7 @@ border-radius: 10vw;
  width:   58vw;
  height: 8vh;
 margin: auto;
-background-color: red;
+background-color: white;
   font-size: 40px;
 
 text-align: center;
@@ -61,7 +60,7 @@ text-align: center;
 
 body {
     /* https://www.color-hex.com/color/d3d3d3 */
-    background-color: lightcoral; /*#f6f6f6, EBEBD3, fafafa*/
+    background-color: white; /*#f6f6f6, EBEBD3, fafafa*/
 
     font-weight: 900;
     border:none;
@@ -70,7 +69,7 @@ body {
   
   }
   *{
-    color: green;
+    color: darkgray;
     outline: none;
     padding: 0;
     margin: 0;
@@ -87,7 +86,7 @@ margin-bottom: 0;
   margin:10;
   padding:10;
 display: block;
-    color: #fff;/*EBEBD3, C5283D*/
+    color: lightgray;/*EBEBD3, C5283D*/
     font-size: 6vw;
     letter-spacing: 0vw;
     user-select: none;
@@ -95,7 +94,7 @@ display: block;
   }
 #title2{
     text-align: center;
-    color: #fff;/*EBEBD3, C5283D*/
+    color: lightgray;/*EBEBD3, C5283D*/
     font-size: 2vw;
     display:block;
     user-select: none;
@@ -131,7 +130,7 @@ display: block;
     width: 60%;
     height: 40px;
   
-    color: white;
+    color: lightgray;
     font-family: Varela Round;
     font-size: 15px;
     font-weight: bold;
@@ -165,7 +164,7 @@ display: block;
   }
   
 #chat_container{
-  background-color: lightcoral;
+  background-color: white;
   width: 100%;
   height: 390px;
 
@@ -208,27 +207,27 @@ display: block;
   margin-top: 10px;
 }
 #chat_input{
-  border-radius: 20px;
   max: 10px;
   float: left;
-  background-color: lightgreen;
-  color: green;
+  background-color: Transparent;
+  color: black;
   font-size: 15px;
 }
 #chat_input_send{
- width: 3vw;
-    height: 4.5vh;
+ width: 3.5vw;
+    height: 3.5vw;
     float: left;
     font-size: 18px;
   border-radius: 500px;
-    background-color: black;
+    background-color: darkgray;
     background-image: url("https://cdn.glitch.me/aba0400a-da74-4a50-8c09-c6c68dbf722e%2Fsend.png?v=1637717846590");
+  background-size: 2.9vw;
     text-align: right;
     color: #ccc;
 }
 #chat_input_send.enabled{
-  color: gray;
-  background-color: Transparent;
+  color: lightgray;
+  background-color: lightgray;
   cursor: pointer;
 
 }
@@ -260,7 +259,7 @@ display: block;
   width: 100%;
   display: inline-block;
 
-    color: white;
+    color: lightgray;
 }
 .message_user_container{
   width: 100%;
@@ -287,6 +286,7 @@ display: block;
    position: relative;
   left: 110px;
   bottom: 43px;
+  width: 278px;
 }
 
 
@@ -340,8 +340,8 @@ display: block;
   100% {}
 }
 ::selection {
-  background-color: #D64045;
-  color: #fff;
+  background-color: lightgray;
+  color: darkgray;
 }
 /* width */
 ::-webkit-scrollbar {
@@ -361,9 +361,9 @@ display: block;
 button {
   padding: 1vw;
 display: inline-block;
-background-color: green;
-border-color: lightgreen; 
-color: red;
+background-color: white;
+  color: lightgray;
+border-color: darkgray; 
 border-radius: 50vw;
   font-size: 1vw;
   border-size: 1vw;
@@ -372,18 +372,20 @@ border-radius: 50vw;
 }
 
 button:hover {
-background-color: lightgreen;
-color: lightcoral;
-  border-color: green; 
+  background-color: transparent;
+  color: darkgray;
+  border-color: lightgray; 
 }
 
-input{
-  border-radius: 20px;
-  max: 10px;
-  width: 300px;
-  height: 40px;
-  float: left;
-  background-color: lightgreen;
-  color: green;
-  font-size: 15px;
+input {
+  padding: 1vw;
+display: inline-block;
+  background-color: Transparent;
+  color: black;
+border-color: darkgray; 
+border-radius: 50vw;
+  font-size: 3w;
+  border-size: 1vw;
+  align-self: auto;
+
 }
