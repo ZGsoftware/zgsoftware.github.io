@@ -25,12 +25,8 @@ var submit = document.getElementById('submit')
 submit.onclick = function() {
   var names = document.getElementById('name')
 localStorage.setItem('name', names.value)
-  if (room != null || room != undefined || room != '') {
-  window.location.href = 'https://' + document.domain + '/apps/?id=0&code=' + room
-  }
-  else{
 window.location.href = 'https://' + document.domain + '/apps/?id=0&code=chatroom1'
-}
+
 }
 
 
