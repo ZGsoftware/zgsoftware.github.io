@@ -13,7 +13,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-let room = html.getparam('code')
+let room = html.geturlparams('code')
 
 var submit = document.getElementById('submit')
 
