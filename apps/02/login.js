@@ -1,3 +1,4 @@
+import { html } from 'https://cdn-cdn.glitch.me/libraies/BetterDOMjs.js'
 // Your web app's Firebase configuration
 var firebaseConfig = {
  apiKey: "AIzaSyCF46UDRHhke3cHfUFOZ3YNcq9EJWdC10Y",
@@ -12,14 +13,19 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
+let room = html.getparam('code')
 
 var submit = document.getElementById('submit')
 
 submit.onclick = function() {
   var names = document.getElementById('name')
 localStorage.setItem('name', names.value)
-  window.location.href = 'https://devcompessays.glitch.me/apps/?id=0&code=chatroom1'
-
+  if (room != null || room != undefined || room != '') {
+  window.location.href = 'https://devcompessays.glitch.me/apps/?id=0&code=' + room
+  }
+  else{
+window.location.href = 'https://devcompessays.glitch.me/apps/?id=0&code=chatroom1'
+}
 }
 
 
