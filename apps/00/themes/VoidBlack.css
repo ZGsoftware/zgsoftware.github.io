@@ -376,7 +376,7 @@ button:hover {
 }
 
 input {
-  padding: 1vw;
+  
 display: inline-block;
 background-color: gray;
   color: lightgray;
@@ -385,5 +385,23 @@ border-radius: 50vw;
   font-size: 3w;
   border-size: 1vw;
   align-self: auto;
-
+padding: 1vw;
+}
+input[type="color"] {
+	-webkit-appearance: none;
+	border: none;
+	width: 32px;
+	height: 32px;
+  padding: 0;
+  border-radius: 50vw;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+  border: none;
+  border-radius: 50vw;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+  padding: 0;
+  border-radius: 50vw;
 }

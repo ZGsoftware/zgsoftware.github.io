@@ -19,16 +19,22 @@ firebase.initializeApp(firebaseConfig);
 
 let SettingId = html.geturlparams('sid')
 let roomcode = html.geturlparams('code')
+let ThemeLab = html.geturlparams('thlb')
 
 let normalurl = 'https://' + document.domain + '/apps/?code=' + roomcode
 
+function createnavbar(){
 html.button('Back to chat', normalurl + '&id=0')
 html.button('Home', normalurl + '&sid=1&id=1')
 html.button('Themes', normalurl + '&sid=2&id=1')
 html.button('Account', normalurl + '&sid=3&id=1')
+}
 
 //Home
 if (SettingId == '1') {
+  html.newdoc()
+  createnavbar()
+  
 html.title('Settings - Home')
   
   html.h1('Settings' ,'Hometitle')
@@ -42,25 +48,55 @@ html.title('Settings - Home')
 
 // Themes
 else if (SettingId == '2') {
+  html.newdoc()
+  createnavbar()
+  
 html.title('Settings - Themes')
 html.h1('Settings - Themes' ,'Themestitle')
-  
+  html.button('Themes Lab', normalurl + '&sid=2&id=1&thlb=true', 'lab')
   
   html.div('Themes')
   html.append('Themestitle', 'Themes')
+  html.append('lab', 'Themes')
+  
+  if (ThemeLab == 'true') {
+    html.newdoc()
+  createnavbar()
+    
+html.title('Themes - Lab')
+html.h1('Themes - Lab' ,'ThemeLabTitle')
+  
+    html.h3('Background', 'colortitle1')
+  html.input_color('#525252', 'bg-color')
+    
+    html.h3('Title & Subtitle', 'colortitle2')
+  html.input_color('#ffffff', 'title-color')
+    
+  html.div('Themes-lab')
+  html.append('ThemeLabTitle', 'Themes-lab')
+    html.append('colortitle1', 'Themes-lab')
+    
+    html.append('bg-color', 'Themes-lab')
+        html.append('colortitle2', 'Themes-lab')
+    
+    html.append('title-color', 'Themes-lab')
+}
 }
 
 
 
 // Account
 else if (SettingId == '3') {
+  html.newdoc()
+  createnavbar()
+  
 html.title('Settings - Account')
 html.h1('Settings - Account' ,'acctitle')
   
   //name
   var username = localStorage.getItem('name')
   html.h4('Name' ,'acc-name-title')
-  html.input_text('', username , '15',  'acc-name')
+  html.input_text('', username, '15',  'acc-name')
   html.h1('', 'Update-name-cont')
   html.buttononclick('Update Account Name', "", 'Update-name')
   //pfp
@@ -101,6 +137,9 @@ html.h1('Settings - Account' ,'acctitle')
 
 // Could Not Find Setting + SettingID
 else {
+  html.newdoc()
+  createnavbar()
+  
   html.title('Settings - Not Found')
   
   html.h1('Setting "' + SettingId + '" Could Not Be Found' ,'ErrorMessage')

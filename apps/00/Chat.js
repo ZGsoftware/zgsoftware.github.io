@@ -1,11 +1,5 @@
-      if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-        document.write('<style>#chat_input{width: 95%;height: 100%;}</style>')
-      }
-else{
-  
-  document.write('<style>#chat_input{width: 100%;height: 100%;}</style>')
-  
-}
+        document.write('<style>#chat_input{width: 90%;height: 100%;}</style>')
+
 // grabs paramiters from the url
 
 var queryString = window.location.search
@@ -21,20 +15,20 @@ var version = localStorage.getItem('ver')
 
 let updates = {
   
-  version : 'Beta 3.3.7',
-  added : 'Settings Menu name changer'
+  version : 'Beta 3.4.6',
+  added : 'Settings : You can now change your text color with the color picker'
   
   
   
   
 }
 
-var client = 'Beta 3.3'
-var fullclient = '3.3.7 B'
-if (version != 'Beta 3.3.7') {
+var client = 'Beta 3.5'
+var fullclient = '3.4.5 B'
+if (version != 'Beta 3.4.5') {
   
 alert('Version : ' + updates.version + "     Thing(s) Added : " + updates.added)
-  var version = localStorage.setItem('ver', 'Beta 3.3.7')
+  var version = localStorage.setItem('ver', 'Beta 3.4.6')
 }
 
 let pfpurle = localStorage.getItem("url");
@@ -190,6 +184,11 @@ const firebaseConfig = {
     alert('e')
   }
 }    
+      var txtcolor = document.createElement("input");
+      txtcolor.setAttribute('type', 'color')
+      txtcolor.setAttribute('value', '#D3D3D3')
+      txtcolor.setAttribute('id', 'colors')
+      
       var chat_input = document.createElement("input");
       chat_input.setAttribute("id", "chat_input");
       chat_input.setAttribute("maxlength", 4000);
@@ -243,7 +242,8 @@ const firebaseConfig = {
       };
 
       chat_logout_container.append(chat_logout);
-      chat_input_container.append(chat_input);
+      chat_input_container.append(txtcolor, chat_input);
+      
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {chat_input_container.append(chat_input_send);}
       chat_inner_container.append(
         chat_content_container,
@@ -261,6 +261,18 @@ const firebaseConfig = {
     save_url(url){
       localStorage.setItem("url", url);
   }
+    get_color(e){
+      let color = document.getElementById('colors')
+      if (color.value == null || color.value == undefined) {
+return '#fffffff'
+
+}
+      else {
+      return color.value
+      }
+      
+    }
+    
     send_message(message) {
       var parent = this;
       if (parent.get_name() == null && message == null) {
@@ -283,6 +295,9 @@ var time = (dateee.getHours()) + ':' + dateee.getMinutes() + ' am'
 
 
 }
+      
+      
+      
       var messageID = Math.random().toString(20).substr(5)
       var messages = db.ref('chats/' + room + 'messages/');
       messages.once("value", function(snapshot) {
@@ -292,6 +307,7 @@ var time = (dateee.getHours()) + ':' + dateee.getMinutes() + ' am'
             profilepic: 'https://proxy-copy.glitch.me/' + parent.get_url(),
             name: parent.get_name(),
             message: message,
+            color: parent.get_color(),
             messageID: messageID,
             index: index,
             time: time,
@@ -356,6 +372,7 @@ return localStorage.getItem("url");
           var profpic = data.profilepic;
           var name = data.name;
           var message = data.message;
+          var msgcolor = data.color;
           var ver = data.client;
           var pic = data.picture;
 
@@ -388,9 +405,10 @@ return localStorage.getItem("url");
             "message_content_container"
           );
 
-          var message_content = document.createElement("p");
+          var message_content = document.createElement("span");
           message_content.setAttribute("class", "message_content");
-          message_content.innerHTML = message;
+          message_content.style.color = msgcolor;
+          message_content.textContent = message;
           
            
 
