@@ -1,15 +1,10 @@
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: darkgray;
-  opacity: 1; /* Firefox */
-}
-
 .message_pfp{
   border-radius: 30vw;
-  width: 6vw;
-  height:  6vw;
+  width: 8vw;
+  height:  8vw;
   font-weight: bold;
   font-size: 14px;
-	background-color: white;
+	background-color: #000000;
   position: relative;
   top: 10px;
 }
@@ -250,7 +245,6 @@ display: block;
   text-decoration: underline;
 }
 .message_container{
-  width: 80%;
   display: inline-block;
   margin-bottom: 20px;
 
@@ -267,10 +261,10 @@ display: block;
 }
   .message_user{
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
   position: relative;
-  left: 5px;
-  bottom: 48px;
+  left: 1vw;
+  bottom: 3vw
 }
 .message_content_container{
   width: 100%;
@@ -281,13 +275,14 @@ display: block;
 }
 .message_content{
   font-weight: normal;
-  font-size: 14px;
+  font-size: 18px;
   margin-top: 5px;
    position: relative;
-  left: 110px;
-  bottom: 43px;
+  left: 9vw;
+  bottom: 3vw;
   width: 278px;
 }
+
 
 
 
@@ -406,4 +401,34 @@ input[type="color"]::-webkit-color-swatch {
 	border: none;
   padding: 0;
   border-radius: 50vw;
+}
+
+#chat_input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: darkgray;
+  opacity: 1; /* Firefox */
+}
+
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: lightgray;
+  opacity: 1; /* Firefox */
+}
+
+input[type="file"] {
+        font-size: 17px;
+        color: #b8b8b8;
+  visibility: hidden;
+}
+
+label{
+
+  padding: 1vw;
+display: inline-block;
+background-color: lightgray;
+  color: gray;
+border-color: darkgray; 
+border-radius: 50vw;
+  font-size: 1vw;
+  border-size: 1vw;
+  align-self: auto;
+
 }

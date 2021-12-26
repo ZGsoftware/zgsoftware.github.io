@@ -1,5 +1,17 @@
-        document.write('<style>#chat_input{width: 90%;height: 100%;}</style>')
-let redirect = 'https://' + document.domain + '/apps/?id=2&code='
+        document.write(`<style>
+
+.message_container{
+  width: 70%;
+}
+
+#chat_input{
+
+width: 90%;
+height: 100%;
+}
+
+</style>`)
+
 // grabs paramiters from the url
 
 var queryString = window.location.search
@@ -15,7 +27,7 @@ var version = localStorage.getItem('ver')
 
 let updates = {
   
-  version : 'Beta 3.4.6',
+  version : 'Beta 3.4.1',
   added : 'Settings : You can now change your text color with the color picker'
   
   
@@ -23,12 +35,12 @@ let updates = {
   
 }
 
-var client = 'Beta 3.5'
-var fullclient = '3.4.5 B'
-if (version != 'Beta 3.4.5') {
+var client = 'Beta 3.4'
+var fullclient = '3.4.1 B'
+if (version != 'Beta 3.4.1') {
   
 alert('Version : ' + updates.version + "     Thing(s) Added : " + updates.added)
-  var version = localStorage.setItem('ver', 'Beta 3.4.6')
+  var version = localStorage.setItem('ver', 'Beta 3.4.1')
 }
 
 let pfpurle = localStorage.getItem("url");
@@ -44,9 +56,12 @@ var baseurl = '/apps/00/'
 else {
 var baseurl = '/apps/00/'
 }
+
+let loginredirect = 'https://' + document.domain + '/apps/?id=2'
+
 if (namee == '' || namee == null || namee == undefined) {
 
-window.location.href = redirect + room
+window.location.href = loginredirect
 
 }
 
@@ -186,10 +201,11 @@ const firebaseConfig = {
 }    
       var txtcolor = document.createElement("input");
       txtcolor.setAttribute('type', 'color')
-      txtcolor.setAttribute('value', '#D3D3D3')
+      txtcolor.setAttribute('value', '#9e9e9e')
       txtcolor.setAttribute('id', 'colors')
       
       var chat_input = document.createElement("input");
+      chat_input.setAttribute("type", "text");
       chat_input.setAttribute("id", "chat_input");
       chat_input.setAttribute("maxlength", 4000);
       chat_input.placeholder = `${localStorage.getItem("name")}. Say something...`;
@@ -198,7 +214,7 @@ const firebaseConfig = {
       var key=e.keyCode || e.which;
   if (key==13){
     if (chat_input.value.length > 0){
-    parent.send_message(chat_input.value)
+    parent.send_message(chat_input.value, 'txt')
     chat_input.value = ''
   }
   }
@@ -237,12 +253,12 @@ const firebaseConfig = {
       chat_logout.textContent = `${localStorage.getItem("name")} • logout`;
       chat_logout.onclick = function() {
         localStorage.clear();
-        window.location.href = redirect + room
+        window.location.href = loginredirect
         parent.home();
       };
 
       chat_logout_container.append(chat_logout);
-      chat_input_container.append(txtcolor, chat_input);
+      chat_input_container.append(chat_input, txtcolor);
       
       if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {chat_input_container.append(chat_input_send);}
       chat_inner_container.append(
@@ -273,7 +289,7 @@ return '#fffffff'
       
     }
     
-    send_message(message) {
+    send_message(message, type) {
       var parent = this;
       if (parent.get_name() == null && message == null) {
         return;
@@ -308,6 +324,7 @@ var time = (dateee.getHours()) + ':' + dateee.getMinutes() + ' am'
             name: parent.get_name(),
             message: message,
             color: parent.get_color(),
+            type: type,
             messageID: messageID,
             index: index,
             time: time,
@@ -375,6 +392,7 @@ return localStorage.getItem("url");
           var msgcolor = data.color;
           var ver = data.client;
           var pic = data.picture;
+          var typ = data.type;
 
           var message_container = document.createElement("div");
           message_container.setAttribute("class", "message_container");
@@ -407,9 +425,14 @@ return localStorage.getItem("url");
 
           var message_content = document.createElement("span");
           message_content.setAttribute("class", "message_content");
+          if (typ = 'txt') {
           message_content.style.color = msgcolor;
           message_content.textContent = message;
-          
+          }
+          else{
+            
+            message_content.innerHTML = message;
+          }
            
 
           message_user_container.append(message_pfp);
