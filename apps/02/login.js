@@ -12,14 +12,7 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// grabs paramiters from the url
 
-var queryString = window.location.search
-  
-  var urlParams = new URLSearchParams(queryString);
-   
-  var room = urlParams.get('code')
-  
 var submit = document.getElementById('submit')
 
 submit.onclick = function() {
