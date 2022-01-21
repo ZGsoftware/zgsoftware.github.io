@@ -84,8 +84,8 @@ let pfp = data2.pfp
           
     let mssg = document.createElement('h1')
           mssg.textContent = username + ' | ' + msg + ` | ${time}, | ${date}`
-          msgpfp.style.backgroundColor = 'green'
-          msgpfp.append(mssg)
+          mssg.style.backgroundColor = 'green'
+          msgscont.append(mssg)
           msgscont.append(msgpfp)
       
       msgscont.scrollTop = msgscont.scrollHeight
