@@ -130,10 +130,37 @@ image_input.addEventListener('change', function() {
   subf.onclick = function(){ pfpupload( 'pfphold' ) }
   
 })
-}
+  html.h1('Bio')
+  dbRefff.get().then((snapshot) => {
+
+  html.input_text(snapshot.val().bio, '', '1000000', 'newbio')
+    let a = document.createElement('button')
+        a.textContent = 'Submit Bio'
+    document.body.append(a)
+    a.onclick = () => {
+      // Add this user to Firebase Database
+    var database_ref = db.ref()
+    
+    
+    // Create User data
+    var user_data = {
+      bio : document.getElementById('newbio').value 
+    }
+
+    // Push to Firebase Database
+    database_ref.child('users/' + currentuid).update(user_data)
+    localStorage.setItem("uid", currentuid)
+    // DOne
+    alert('Bio Updated')
+    window.location.reload()
+    }
+  }
+  )}
+  
 
 // view profile
 if(html.urlparamsis('place', 'view') == true){
+  createnavbar()
   let dbRef = db.ref('users/' + html.geturlparams('user'))
 
 dbRef.get().then((snapshot) => {
@@ -141,7 +168,8 @@ dbRef.get().then((snapshot) => {
   let data = snapshot.val()
   
   html.h1(data.username + "'s Profile")
-  html.img(data.pfp, '', 'msgpfp')
+  html.h1(html.img(data.pfp, '', 'msgpfp'))
+  html.p(data.bio, '', 'bio')
 
 
 })

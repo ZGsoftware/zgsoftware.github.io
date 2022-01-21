@@ -81,12 +81,14 @@ let pfp = data2.pfp
       window.location.href = `https://${document.domain}/account/?user=${data.uid}&place=view`
       
     }
-          
-    let mssg = document.createElement('h1')
-          mssg.textContent = username + ' | ' + msg + ` | ${time}, | ${date}`
-          mssg.style.backgroundColor = 'green'
-          msgscont.append(mssg)
-          msgscont.append(msgpfp)
+    let mssgc = document.createElement('div')
+    mssgc.style.backgroundColor = '#859BFF'
+    let mssg = document.createElement('div')
+          mssg.setAttribute('class', 'msgtxt')
+          mssg.textContent = `${username} - ${time} | ${date} | ${msg}`
+          mssgc.append(msgpfp)
+          mssgc.append(mssg)
+          msgscont.append(mssgc)
       
       msgscont.scrollTop = msgscont.scrollHeight
     
